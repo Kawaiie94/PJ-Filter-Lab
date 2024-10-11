@@ -1,0 +1,84 @@
+video {
+    vertical-align: top;
+    --width       : 30vw;
+    width         : var(--width);
+    height        : calc(var(--width) * 0.6625);
+    margin        : 20px;
+    border        : 1px solid #292929;
+    background    : #999;
+}
+
+.logo-container {
+    width: 100%;
+    max-width: 200px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.square-background {
+    width: 12vi;
+    height: 15vh;
+    min-width: 180px;
+    max-height: 160px;
+    background-color: #ffb7d9b7;
+    border: 8px solid #fff6d1;
+    border-radius: 1px;
+}
+
+a.button{
+    text-decoration: none;
+    position: relative;
+    background-color: hsl(217, 75%, 80%);
+    color: #fff;
+    padding: .8rem 2.2rem;
+    margin-inline: 0.8rem;
+    border-radius: 3rem;
+    transition: .4s;
+}
+
+a.button::after{
+    content: '';
+    width: 80%;
+    height: 40%;
+    position: absolute;
+    background: linear-gradient(80deg,
+                hsl(217, 80%, 80%) 10%,
+                hsl(217, 85%, 70%) 48%);
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    margin: 0 auto;
+    color: #fff;
+    border-radius: 3rem;
+    filter: blur(12px);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity .4s;
+}
+
+a.button:hover::after{
+    opacity: 1;
+}
+
+a.button:hover{
+    transform: scale(1.2);
+}
+
+img.animation{
+    width: 90%;
+    height: 100%;
+    max-height: 30rem;
+    object-fit: cover;
+    animation: float 3s ease-out infinite;
+}
+@keyframes float {
+    50%{
+        transform: translateY(60px);
+    }
+}

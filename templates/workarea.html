@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="static/css/work.css">
+
+</head>
+<body>
+    <header class="d-flex justify-content-center border-bottom py-1 pt-3">
+      <!-- Logo website -->
+      <div class="logo-container">
+        <img src="static/img/project.png" alt="Logo">
+      </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row bg-body-tertiary" style="height: 90vh;">
+          <!-- Nav-link select feature -->
+          <div class="col-sm-1 d-flex flex-column flex-shrink-0 bg-white px-0 border-end" style="width: 6rem;">
+              <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+                <li class="nav-item">
+                  <a href="#collapseText" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseText">
+                    <i class="bi bi-chat-left-quote fs-4"></i> <br> <p class="m-0" style="font-size: 12px;">text</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#collapseMask" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseMask">
+                    <i class="bi bi-magic fs-4"></i> <br> <p class="m-0" style="font-size: 12px;">mask</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#collapseBg" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseBg">
+                    <i class="bi bi-images fs-4"></i> <br> <p class="m-0" style="font-size: 12px;">background</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#collapseDb" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseDb" id="dbBtn">
+                    <i class="bi bi-cloud-download fs-4"></i> <br> <p class="m-0" style="font-size: 12px;">Finder</p>
+                  </a>
+                </li>
+                <li style="padding-top: 20px;">
+                  <a href="#" class="py-3 border-bottom rounded-0" role="button" id="reset-link">
+                    <i class="bi bi-trash fs-4"></i> <br> <p class="m-0" style="font-size: 12px;">Reset</p>
+                  </a>
+                </li>
+                </ul>
+          </div>
+
+          <!-- text filter setting-->
+          <div class="collapse collapse-horizontal col-sm-4" id="collapseText" style="transition: 0.3s; background-color: #FFFBF5;">
+            <div class="container-md py-3">
+              <h3>Text Filter</h3>
+
+              <!-- อินพุตรับข้อความ -->
+              <div class="row row-cols-1 row-cols-md-3 g-4">
+                  <div class="input-group mb-3">
+                    <button class="btn btn-outline-secondary" type="button" id="text-uploadBtn" style="background-color: #FDCEDF;">
+                      <i class="bi bi-send"></i>
+                    </button>
+                    <input type="text" class="form-control text" placeholder="Paste the text..." aria-label="Example text with button addon" aria-describedby="text-uploadBtn">
+                  </div>
+              </div>
+
+              <div class="d-flex justify-content-end mt-3">
+                <button class="btn btn-lg" id="textFilter">Save</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- mask filter setting -->
+          <div class="collapse collapse-horizontal col-sm-4" id="collapseMask" style="transition: 0.3s; background-color: #FFFBF5;">
+            <div class="container-md py-3">
+              <h3>Mask Filter</h3>
+              <!-- กรอบแสดงรูปตัวอย่าง -->
+              <div class="border rounded-3 bg-white px-3 pt-3 mb-3 d-flex justify-content-center image-container">
+                <p class="text-muted select_object" id="selectedImageText">Select the image...</p>
+              </div>
+
+              <div class="collapse" id="collapseScale">
+                <label for="customRangeX" class="form-label">x axis</label>
+                <input type="range" class="form-range" id="customRangeX" min="-100" max="100" value="0">
+
+                <label for="customRangeY" class="form-label">y axis</label>
+                <input type="range" class="form-range" id="customRangeY" min="-100" max="100" value="0">
+
+                <label for="customRangeZ" class="form-label">rotate</label>
+                <input type="range" class="form-range" id="customRangeZ" min="-180" max="180" value="0">
+              </div>
+
+              <!-- การ์ดรูปภาพ -->
+              <p class="text-muted">Example</p>
+              <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                  <!-- การ์ดเปล่า -->
+                  <div class="col">
+                      <div class="card card-img" onclick="displayImage(this, 'icon', '.image-container')">
+                          <div class="card-body text-center">
+                            <i class="bi bi-ban fs-2"></i>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- การ์ด demo1 -->
+                  <div class="col">
+                      <div class="card card-img" onclick="displayImage(this, 'static/img/mask.webp', '.image-container')">
+                          <img src="static/img/mask.webp" class="card-img-top">
+                          <div class="card-body pt-0">
+                              <p class="card-title text-center small">Halloween</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- การ์ด demo2 -->
+                  <div class="col">
+                      <div class="card card-img" onclick="displayImage(this, 'static/img/mask1.png', '.image-container')">
+                          <img src="static/img/mask1.png" class="card-img-top">
+                          <div class="card-body pt-0">
+                              <p class="card-title text-center small">Dumpling</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- การอัพโหลดรูปภาพ -->
+              <!-- <p class="text-muted">Custom</p>
+              <div class="row row-cols-1 row-cols-md-3 g-4">
+                  <div class="input-group mb-3">
+                    <button class="btn btn-outline-secondary" type="button" id="object-uploadBtn" style="background-color: #FDCEDF;" onclick="uploadImage('object-uploadBtn', '.image-container')">
+                      <i class="bi bi-upload"></i>
+                    </button>
+                    <input type="text" class="form-control mask" placeholder="Paste the image link..." aria-label="Example text with button addon" aria-describedby="object-uploadBtn">
+                  </div>
+              </div> -->
+
+              <form class="p-3 text-center" class="p-3 text-center" enctype="multipart/form-data" id="uploadMask">
+                <input class="form-control" type="file" name="imagefile" id="imagefile">
+                <input class="btn btn-primary mt-3"type="submit" value="Predict Image" style="display: none;" id="submitBtn">
+              </form>
+
+              <!-- button save mask filter -->
+              <div class="d-flex justify-content-end mt-3">
+                  <button class="btn btn-lg" id="maskFilter">Save</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- bg filter setting -->
+          <div class="collapse collapse-horizontal col-sm-4" id="collapseBg" style="transition: 0.3s; background-color: #FFFBF5;">
+            <div class="container-md py-3">
+              <h3>Background</h3>
+
+              <!-- กรอบแสดงรูปตัวอย่าง -->
+              <div class="border rounded-3 bg-white px-3 pt-3 mb-3 d-flex justify-content-center bg-container">
+                <p class="text-muted select_bg" id="selectedImageText">Select the image...</p>
+              </div>
+
+              <!-- การ์ดรูปภาพ -->
+              <p class="text-muted">Example</p>
+              <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                  <!-- การ์ดเปล่า -->
+                  <div class="col">
+                      <div class="card card-img" onclick="displayImage(this, 'icon', '.bg-container')">
+                          <div class="card-body text-center">
+                            <i class="bi bi-ban fs-2"></i>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- การ์ด bg1 -->
+                  <div class="col">
+                      <div class="card card-img" onclick="displayImage(this, 'static/img/bg1.jpg', '.bg-container')">
+                          <img src="static/img/bg1.jpg" class="card-img-top">
+                          <div class="card-body pt-0">
+                              <p class="card-title text-center small">ชีวิตดีๆ</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- การ์ด bg2 -->
+                  <div class="col">
+                      <div class="card card-img" onclick="displayImage(this, 'static/img/bg2.jpg', '.bg-container')">
+                          <img src="static/img/bg2.jpg" class="card-img-top">
+                          <div class="card-body pt-0">
+                              <p class="card-title text-center small">กินข้าวยังจ๊ะ</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- grid สำหรับรองรับการอัพโหลดรูปภาพ -->
+              <p class="text-muted">Custom</p>
+              <div class="row row-cols-1 row-cols-md-3 g-4">
+                  <!-- การ์ดแสดง icon upload -->
+                  <div class="input-group mb-3">
+                    <button class="btn btn-outline-secondary" type="button" id="bg-uploadBtn" style="background-color: #FDCEDF;" onclick="uploadImage('bg-uploadBtn', '.bg-container')">
+                      <i class="bi bi-upload"></i>
+                    </button>
+                    <input type="text" class="form-control bg" placeholder="Paste the image link..." aria-label="Example text with button addon" aria-describedby="bg-uploadBtn">
+                  </div>
+              </div>
+
+              <!-- button save อยู่ติดขอบล่างสุด -->
+              <div class="d-flex justify-content-end mt-3">
+                <button class="btn btn-lg" id="bgFilter">Save</button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- filters select setting -->
+          <div class="collapse collapse-horizontal col-sm-4" id="collapseDb" style="transition: 0.3s; background-color: #FFFBF5;">
+            <div class="container-md py-3">
+              <h3>Filters</h3>
+
+              <!-- การ์ดรูปภาพ -->
+              <p class="text-muted">Example</p>
+              <div id="dataDisplay" class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                <!-- Dynamic cards will be added here -->
+            </div>
+
+            </div>
+          </div>
+
+          <!-- webcam -->
+          <div id="page" class="col bg-white">
+            <!-- setting camera -->
+            <div class="d-flex justify-content-end align-items-center mt-4 me-5">
+              <input type="radio" class="btn-check" name="options-base" id="option1" value="photo" autocomplete="off" checked>
+              <label class="btn" for="option1"><i class="bi bi-camera"></i></label>
+
+              <input type="radio" class="btn-check mx-5" name="options-base" id="option2" value="video" autocomplete="off">
+              <label class="btn ms-1 me-3" for="option2"><i class="bi bi-camera-reels"></i></label>
+            </div>
+
+            <!-- Display Camera -->
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="polaroid card mt-4">
+                    <video id="videoDisplay" playsinline autoplay></video>
+                    <!-- <canvas id="frame" width="640" height="480" style="display: none;"></canvas> -->
+
+                    <img id="frame" src="" style="display: none;">
+                    <button id="record" class="circle-btn pb-1 pe-2">
+                        <i id="iconRecord" class="bi bi-camera-fill bi-lg" style="font-size: 25px;"></i>
+                    </button>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="modalLabel">
+                      Finish
+                      <i class="bi bi-emoji-wink"></i>
+                      <i class="bi bi-box2-heart"></i>
+                  </h5>
+              </div>
+              <div class="modal-body">
+                  <!-- โล่งๆเหมือนโดเรม่อน ใช้ js สร้างแทน -->
+                  <!-- <video id="recorded" playsinline loop></video> -->
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button id="download" type="button" class="btn btn-primary">Download</button>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/webapp_features.js"></script>
+    <script src="static/js/connect_api.js"></script>
+</body>
+</html>
